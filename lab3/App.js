@@ -3,11 +3,14 @@ import { Platform, StyleSheet, Text, View, ImageBackground, Image, TextInput, Di
 import bgImage from './images/background.jpg'
 import logo from './images/logo.png'
 import Icon from 'react-native-vector-icons/Ionicons'
+import SignUp from './SignUp'
 
 const { width: WIDTH } = Dimensions.get('window')
 
 type Props = {};
 export default class App extends Component<Props> {
+
+
   render() {
     return (
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
@@ -37,6 +40,10 @@ export default class App extends Component<Props> {
 
         <TouchableOpacity style={styles.btnLogin}>
           <Text style={styles.text}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.btnLogin}>
+          <Text style={styles.text}>Sign Up</Text>
         </TouchableOpacity>
       </ImageBackground>
     );
@@ -100,7 +107,7 @@ const styles = StyleSheet.create({
     marginTop: 20
   },
 
-  text:{
+  text: {
     color: 'rgba(255, 255, 255, 1)',
     fontSize: 16,
     textAlign: 'center'
