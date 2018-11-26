@@ -10,7 +10,7 @@ export default class SignUp extends React.Component {
         firebase
             .auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
-            .then(() => this.props.navigation.navigate('Main'))
+            .then(() =>   this.props.navigation.navigate('Chat', { email: this.state.email }))
             .catch(error => this.setState({ errorMessage: error.message }))
     }
     render() {
@@ -59,29 +59,3 @@ const styles = StyleSheet.create({
         marginTop: 8
     }
 })
-// import React from 'react';
-// import { StyleSheet, View, Text } from 'react-native';
-
-// export default class SignUp extends React.Component {
-
-//     constructor(props) {
-//         super(props)
-//     }
-
-//     render() {
-//         return (
-//             <View style={styles.container}>
-//                 <Text>Coucou</Text>
-//             </View>
-//         );
-//     }
-// }
-
-
-// const styles = StyleSheet.create({
-//     container: {
-//         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center'
-//     },
-// });
