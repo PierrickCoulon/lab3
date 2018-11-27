@@ -5,9 +5,11 @@ import Fire from '../Fire';
 
 class Chat extends Component {
 
-  // static navigationOptions = ({ navigation }) => ({
-  //   title: 'Chat!',
-  // });
+  static navigationOptions = {
+    title: "Chat",
+    headerTintColor: 'red',
+    headerTitleStyle: { color: 'black' }
+  };
 
   state = {
     messages: [],

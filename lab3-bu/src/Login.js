@@ -4,6 +4,14 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class Login extends React.Component {
+
+    static navigationOptions = ({ navigation }) => ({
+        title: 'Login',
+        headerBackTitle: 'Sign Out',
+        headerTintColor: 'black',
+        headerLeft: null
+    });
+
     state = { email: '', password: '', errorMessage: null }
     handleLogin = () => {
         const { email, password } = this.state

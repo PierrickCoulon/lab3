@@ -12,7 +12,7 @@ class Fire {
     onAuthStateChanged = user => {
         if (!user) {
             try {
-                firebase.auth().signInAnonymously();
+               firebase.auth().signInAnonymously();
             } catch ({ message }) {
                 alert(message);
             }
@@ -42,11 +42,12 @@ class Fire {
     }
 
     off() {
+        // firebase.auth().signOut()
         this.ref.off();
     }
 
     get uid() {
-        return (firebase.auth().currentUser.uid)// || {}).uid;
+        return (firebase.auth().currentUser || {}).uid;
     }
 
     get timestamp() {
