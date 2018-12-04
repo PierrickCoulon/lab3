@@ -1,9 +1,12 @@
 import firebase from 'firebase';
+import Login from './src/Login'
+import Chat from './src/Chat'
+import global from './globals'
 
 class Fire {
     constructor() {
         this.init();
-        this.observeAuth();
+        //this.observeAuth();
     }
 
     observeAuth = () =>
@@ -12,12 +15,19 @@ class Fire {
     onAuthStateChanged = user => {
         if (!user) {
             try {
-               firebase.auth().signInAnonymously();
+                firebase.auth().signInWithEmailAndPassword(global.email, global.pass)
             } catch ({ message }) {
                 alert(message);
             }
+        } else {
+                firebase.auth().signInWithEmailAndPassword(global.email, global.pass)
         }
     };
+
+    giveData(email, pass) {
+        global.email = email;
+        global.pass = pass;
+    }
 
     get ref() {
         return firebase.database().ref('messages');
@@ -42,11 +52,12 @@ class Fire {
     }
 
     off() {
-        // firebase.auth().signOut()
         this.ref.off();
+        firebase.auth().signOut();
     }
 
     get uid() {
+
         return (firebase.auth().currentUser || {}).uid;
     }
 

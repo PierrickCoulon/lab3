@@ -2,6 +2,7 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native'
 import firebase from 'react-native-firebase'
+//import Fire from '../Fire';
 
 export default class Login extends React.Component {
 
@@ -14,13 +15,17 @@ export default class Login extends React.Component {
 
     state = { email: '', password: '', errorMessage: null }
     handleLogin = () => {
+        global.email = this.state.email
+        global.pass = this.state.password
         const { email, password } = this.state
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then(() => this.props.navigation.navigate('Chat', { email: this.state.email }))
+            .then(() => this.props.navigation.navigate('Chat', { email: this.state.email, pass: this.state.password }))
             .catch(error => this.setState({ errorMessage: error.message }))
-    }
+        
+            firebase.auth().signInWithEmailAndPassword(global.email, global.pass)
+        }
     render() {
         return (
             <View style={styles.container}>
